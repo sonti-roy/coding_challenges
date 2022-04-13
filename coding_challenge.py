@@ -22,7 +22,7 @@ print("Program started at :-" + " " +str(program_start_time.strftime("%H:%M:%S,%
 watch_folder = "folder1"
 
 # get list of all files only in the given directory before the loop started
-before = list(f for f in os.listdir (watch_folder))
+previous_list = list(f for f in os.listdir (watch_folder))
 
 # variable for storing count of files copied
 count = 0
@@ -37,14 +37,14 @@ while True:
   	start_time = datetime.now()
 
   	# get list of all files only in the given directory after 30 seconds
-  	after = list(f for f in os.listdir (watch_folder))
+  	current_list = list(f for f in os.listdir (watch_folder))
 
   	# Display the scanning time
   	print("-------------------------------------------------------------------")
   	print("Scanned at :-" + " " + str(start_time.strftime("%H:%M:%S,%m/%d/%Y")))
 
   	# acquire all files names added to the folder
-  	added = list(f for f in after if not f in before)
+  	added = list(f for f in current_list if not f in previous_list)
 
   	# create a empty list to store files names that are coied
   	file_copied = list()
@@ -64,8 +64,8 @@ while True:
   		# Count the total number of files copied 
   		count = count + 1
 
-  	# assign after dir list to before dir list
-  	before = after
+  	# assign current dir list to previous dir list
+  	previous_list = current_list
 
   	# Print total files copied
   	print("Total file copied :-" + " " + str(count))
