@@ -4,7 +4,7 @@
 import os
 
 # For accessing date and time
-from datetime import datetime, time
+from datetime import datetime
 
 # For copying files, provide high-level operations on files and collections of files
 import shutil
